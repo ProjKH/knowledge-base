@@ -806,7 +806,7 @@ Meshal Lite是一款用于共同创造冒险故事、并且注重于简洁和快
 
 ### 方格地图（Grid Map）
 
-![mapsample_grid.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_grid.png)
+![mapsample_grid.png](images/mapsample_grid.png)
 
 方格地图被经线与纬线分割为一个个紧邻的小方格，每个方格被视作1步见方，将角色的指示物置于方格内。一个方格与其邻边的方格距离为1步，与对角的方格距离为1.5步——因此在测量距离时，每2个对角方格视为3步，如果只有1个对角方格，则舍去小数视作1步。
 
@@ -814,7 +814,7 @@ Meshal Lite是一款用于共同创造冒险故事、并且注重于简洁和快
 
 ### 六边格地图（Hexagon Map）
 
-![mapsample_hex.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_hex.png)
+![mapsample_hex.png](images/mapsample_hex.png)
 
 六边格地图被分割为一个个紧邻的六边形，每个六边形的边线与其他六边形的边线相接。一个六边格与其邻边的六边格之间距离为1步。测量距离时，统计两处间最短途径的六边格数量，即可得到步数。
 
@@ -822,7 +822,7 @@ Meshal Lite是一款用于共同创造冒险故事、并且注重于简洁和快
 
 ### 无网格地图（Gridless Map）
 
-![mapsample_gridless.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_gridless.png)
+![mapsample_gridless.png](images/mapsample_gridless.png)
 
 你也可以使用没有任何网格标记的地图进行游戏，此时一把卷尺将是非常有用的测量工具。在测距前，请约定一个中型生物的占位（通常是指示物的底盘直径）作为1步。测量距离时，用卷尺测量两处间的最短距离，并根据中型生物的直径得出两者间的距离步数。举例来说：以底盘直径为2厘米的模型作为中型生物的占位，通过卷尺测量得到两处间的最短距离为15厘米，那么两处间的距离为15厘米÷2厘米=7.5步，舍去小数为7步。
 
@@ -844,27 +844,27 @@ Meshal Lite是一款用于共同创造冒险故事、并且注重于简洁和快
 
 - 方格地图中的射线区域
     
-    ![mapsample_ray_grid.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_ray_grid.png)
+    ![mapsample_ray_grid.png](images/mapsample_ray_grid.png)
     
 - 六边格地图中的射线区域
     
-    ![mapsample_ray_hex.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_ray_hex.png)
+    ![mapsample_ray_hex.png](images/mapsample_ray_hex.png)
     
 - 无网格地图中的射线区域
     
-    ![mapsample_ray_gridless.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_ray_gridless.png)
+    ![mapsample_ray_gridless.png](images/mapsample_ray_gridless.png)
     
 - 方格地图中的曲线区域
     
-    ![mapsample_curve_grid.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_curve_grid.png)
+    ![mapsample_curve_grid.png](images/mapsample_curve_grid.png)
     
 - 六边格地图中的曲线区域
     
-    ![mapsample_curve_hex.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_curve_hex.png)
+    ![mapsample_curve_hex.png](images/mapsample_curve_hex.png)
     
 - 无网格地图中的射线区域
     
-    ![mapsample_curve_gridless.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_curve_gridless.png)
+    ![mapsample_curve_gridless.png](images/mapsample_curve_gridless.png)
     
 
 ### 圆形（Disc）、扇形（Sector）与环形（Ring）
@@ -879,39 +879,39 @@ Meshal Lite是一款用于共同创造冒险故事、并且注重于简洁和快
 
 - 方格地图中的圆形区域
     
-    ![mapsample_disc_grid.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_disc_grid.png)
+    ![mapsample_disc_grid.png](images/mapsample_disc_grid.png)
     
 - 六边格地图中的圆形区域
     
-    ![mapsample_disc_hex.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_disc_hex.png)
+    ![mapsample_disc_hex.png](images/mapsample_disc_hex.png)
     
 - 无网格地图中的圆形区域
     
-    ![mapsample_disc_gridless.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_disc_gridless.png)
+    ![mapsample_disc_gridless.png](images/mapsample_disc_gridless.png)
     
 - 方格地图中的扇形区域
     
-    ![mapsample_sector_grid.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_sector_grid.png)
+    ![mapsample_sector_grid.png](images/mapsample_sector_grid.png)
     
 - 六边格地图中的扇形区域
     
-    ![mapsample_sector_hex.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_sector_hex.png)
+    ![mapsample_sector_hex.png](images/mapsample_sector_hex.png)
     
 - 无网格地图中的扇形区域
     
-    ![mapsample_sector_gridless.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_sector_gridless.png)
+    ![mapsample_sector_gridless.png](images/mapsample_sector_gridless.png)
     
 - 方格地图中的环形区域
     
-    ![mapsample_ring_grid.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_ring_grid.png)
+    ![mapsample_ring_grid.png](images/mapsample_ring_grid.png)
     
 - 六边格地图中的环形区域
     
-    ![mapsample_ring_gridless.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_ring_gridless.png)
+    ![mapsample_ring_gridless.png](images/mapsample_ring_gridless.png)
     
 - 无网格地图中的环形区域
     
-    ![mapsample_ring_hex.png](%E6%B8%B8%E6%88%8F%E6%89%8B%E5%86%8C%201afd619a067b8066bfaecd2d9daa67dd/mapsample_ring_hex.png)
+    ![mapsample_ring_hex.png](images/mapsample_ring_hex.png)
     
 
 ## [扩展] 方位（Position）
