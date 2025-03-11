@@ -34,7 +34,7 @@ jobs:
             - uses: actions/checkout@v4
               with:
                   ref: main
-                  token: ${{ secrets.GH_TOKEN }}
+                  token: ${{ github.token }}
 
             - name: Translate to ${{ matrix.language.name }}
               uses: 0xjord4n/aixion@v1.2.1
@@ -75,7 +75,7 @@ jobs:
             - uses: actions/checkout@v4
               with:
                   ref: main
-                  token: ${{ secrets.GH_TOKEN }}
+                  token: ${{ github.token }}
 
             # Download all translation artifacts
             - name: Download all translations
