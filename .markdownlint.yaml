@@ -1,0 +1,14 @@
+# 修改标题样式为 ATX（如 `### Title`）
+MD003:
+  style: "atx"
+
+# 设置无序列表缩进为 4 空格
+MD007:
+  indent: 4
+
+# 代码块格式要求使用 fenced（三个反引号）
+MD046:
+  style: "fenced"
+
+# 禁用 MD013（行长度限制）
+MD013: false
