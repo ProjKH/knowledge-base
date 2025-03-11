@@ -57,7 +57,7 @@ jobs:
                             "content_path": "${{ github.event.inputs.file_name }}.md"
                           }
                         ],
-                        save_path: "i18n/${{ github.event.inputs.file_name }}/${{ github.event.inputs.file_name }}_${{ matrix.language.code }}.md",
+                        "save_path": "i18n/${{ github.event.inputs.file_name }}/${{ github.event.inputs.file_name }}_${{ matrix.language.code }}.md",
                         "model": "${{ vars.AI_MODEL_NAME }}"
                       }
 
