@@ -20,12 +20,9 @@ jobs:
                 language:
                     [
                         { code: "EN", name: "English" },
-                        { code: "ES", name: "Spanish" },
-                        { code: "DE", name: "German" },
-                        { code: "FR", name: "French" },
-                        { code: "IT", name: "Italian" },
                         { code: "JA", name: "Japanese" },
-                        { code: "KOR", name: "Korean" },
+                        { code: "ES", name: "Spanish" },
+                        { code: "FR", name: "French" },
                         { code: "RU", name: "Russian" },
                     ]
         permissions:
