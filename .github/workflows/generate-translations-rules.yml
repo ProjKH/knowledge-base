@@ -19,8 +19,10 @@ jobs:
                 language:
                     [
                         { code: "EN", name: "English" },
-                        { code: "JA", name: "Japanese" },
+                        { code: "FR", name: "French" },
                         { code: "ES", name: "Spanish" },
+                        { code: "RU", name: "Russian" },
+                        { code: "JA", name: "Japanese" }
                     ]
         permissions:
             contents: write
