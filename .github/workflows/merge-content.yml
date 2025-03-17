@@ -28,23 +28,22 @@ jobs:
 
       - name: Get changed directories
         id: changed-dirs
-        # 获取所有变更的目录
         run: |
-          CHANGED_DIRS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^[^/]+/' | cut -d'/' -f1 | sort -u)
+          # 获取所有变更的目录
+          CHANGED_DIRS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^[^/]+/' | cut -d'/' -f1 | sort -u | tr '\n' ',' | sed 's/,$//')
           echo "Changed directories: $CHANGED_DIRS"
           echo "dirs<<EOF" >> $GITHUB_OUTPUT
           echo "$CHANGED_DIRS" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Execute merge script for each directory
-        # 读取变更的目录并执行合并脚本
+      - name: Execute merge script
         run: |
-          echo "${{ steps.changed-dirs.outputs.dirs }}" | while read -r dir; do
-            if [ -d "$dir" ] && [ -f "scripts/merge.py" ]; then
-              echo "Processing directory: $dir"
-              python scripts/merge.py "$dir"
-            fi
-          done
+          if [ -n "${{ steps.changed-dirs.outputs.dirs }}" ]; then
+            echo "Processing directories: ${{ steps.changed-dirs.outputs.dirs }}"
+            python scripts/merge.py "${{ steps.changed-dirs.outputs.dirs }}"
+          else
+            echo "No directories to process"
+          fi
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5

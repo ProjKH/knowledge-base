@@ -21,8 +21,8 @@ def merge_md_files(features_dir, output_file):
     
     # 合并内容
     with output_file.open('w', encoding='utf-8') as outfile:
-        # 写入标题 # Features
-        outfile.write('# Features\n\n')
+        # 写入标题
+        outfile.write(f'# {features_dir.name}\n\n')
 
         for i, md_file in enumerate(md_files):
             # 读取并处理内容
@@ -39,20 +39,24 @@ def merge_md_files(features_dir, output_file):
 
 def main():
     # 设置命令行参数
-    parser = argparse.ArgumentParser(description='Merge markdown files from a directory')
-    parser.add_argument('name', default='Features', nargs='?',
-                       help='Name of the input directory and output file (default: Features)')
+    parser = argparse.ArgumentParser(description='Merge markdown files from directories')
+    parser.add_argument('dirs', help='Comma-separated list of directories to process')
     
     args = parser.parse_args()
     
     # 设置路径
     current_dir = Path.cwd()
-    features_dir = current_dir / args.name
-    output_file = current_dir / f'{args.name}.md'
+    dir_list = [d.strip() for d in args.dirs.split(',')]
     
     # 执行合并
-    merge_md_files(features_dir, output_file)
-    print(f'Successfully merged files into {output_file}')
+    for dir_name in dir_list:
+        features_dir = current_dir / dir_name
+        output_file = current_dir / f'{dir_name}.md'
+        if features_dir.exists():
+            merge_md_files(features_dir, output_file)
+            print(f'Successfully merged files from {dir_name} into {output_file}')
+        else:
+            print(f'Directory {dir_name} does not exist, skipping...')
 
 if __name__ == '__main__':
     main()
