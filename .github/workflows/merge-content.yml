@@ -29,8 +29,8 @@ jobs:
       - name: Get changed directories
         id: changed-dirs
         run: |
-          # 获取所有变更的目录
-          CHANGED_DIRS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^[^/]+/' | cut -d'/' -f1 | sort -u | tr '\n' ',' | sed 's/,$//')
+          # 获取所有变更的目录，移除引号并处理输出
+          CHANGED_DIRS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^[^/]+/' | cut -d'/' -f1 | sort -u | tr -d '"' | tr '\n' ',' | sed 's/,$//')
           echo "Changed directories: $CHANGED_DIRS"
           echo "dirs=$CHANGED_DIRS" >> $GITHUB_OUTPUT
 
