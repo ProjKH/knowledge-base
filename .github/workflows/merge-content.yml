@@ -32,9 +32,7 @@ jobs:
           # 获取所有变更的目录
           CHANGED_DIRS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^[^/]+/' | cut -d'/' -f1 | sort -u | tr '\n' ',' | sed 's/,$//')
           echo "Changed directories: $CHANGED_DIRS"
-          echo "dirs<<EOF" >> $GITHUB_OUTPUT
-          echo "$CHANGED_DIRS" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          echo "dirs=$CHANGED_DIRS" >> $GITHUB_OUTPUT
 
       - name: Execute merge script
         run: |
