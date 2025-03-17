@@ -1,0 +1,53 @@
+name: Merge Content
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'Features/**'
+      # 可以在这里添加更多目录
+      # - 'OtherDir/**'
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 获取完整的 git 历史
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Get changed directories
+        id: changed-dirs
+        # 获取所有变更的目录
+        run: |
+          CHANGED_DIRS=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E '^[^/]+/' | cut -d'/' -f1 | sort -u)
+          echo "Changed directories: $CHANGED_DIRS"
+          echo "dirs<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED_DIRS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Execute merge script for each directory
+        # 读取变更的目录并执行合并脚本
+        run: |
+          echo "${{ steps.changed-dirs.outputs.dirs }}" | while read -r dir; do
+            if [ -d "$dir" ] && [ -f "scripts/merge.py" ]; then
+              echo "Processing directory: $dir"
+              python scripts/merge.py "$dir"
+            fi
+          done
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Merge content from changed directories"
+          file_pattern: "*.md"
