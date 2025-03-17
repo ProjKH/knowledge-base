@@ -1,6 +1,7 @@
 import os
 import re
 from pathlib import Path
+import argparse
 
 def process_content(content):
     # 替换 Notion 链接格式为加粗文本
@@ -37,10 +38,17 @@ def merge_md_files(features_dir, output_file):
                 outfile.write('\n\n---\n\n')
 
 def main():
+    # 设置命令行参数
+    parser = argparse.ArgumentParser(description='Merge markdown files from a directory')
+    parser.add_argument('name', default='Features', nargs='?',
+                       help='Name of the input directory and output file (default: Features)')
+    
+    args = parser.parse_args()
+    
     # 设置路径
     current_dir = Path.cwd()
-    features_dir = current_dir / 'Features'
-    output_file = current_dir / 'Features.md'
+    features_dir = current_dir / args.name
+    output_file = current_dir / f'{args.name}.md'
     
     # 执行合并
     merge_md_files(features_dir, output_file)
