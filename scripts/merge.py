@@ -12,6 +12,9 @@ def process_content(content):
     rep = re.sub(r'^#', r'##', rep, count=1, flags=re.MULTILINE)
     # 调整 {{f|name}} 为 `name`
     rep = re.sub(r'\{\{f\|([^\}]+)\}\}', r'`\1`', rep)
+    # 调整 <aside> 为 ```md, 调整 </aside> 为 ```
+    rep = re.sub(r'<aside>', r'```md', rep)
+    rep = re.sub(r'</aside>', r'```', rep)
     return rep
 
 def merge_md_files(features_dir, output_file):
