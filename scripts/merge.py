@@ -17,17 +17,17 @@ def process_content(content):
     rep = re.sub(r'</aside>', r'```', rep)
     return rep
 
-def merge_md_files(features_dir, output_file):
+def merge_md_files(content_dir, output_file):
     # 确保输出目录存在
     output_file.parent.mkdir(parents=True, exist_ok=True)
     
     # 获取所有 md 文件并排序
-    md_files = sorted([f for f in features_dir.glob('*.md')])
+    md_files = sorted([f for f in content_dir.glob('*.md')])
     
     # 合并内容
     with output_file.open('w', encoding='utf-8') as outfile:
         # 写入标题
-        outfile.write(f'# {features_dir.name}\n\n')
+        outfile.write(f'# {content_dir.name}\n\n')
 
         for i, md_file in enumerate(md_files):
             # 读取并处理内容
@@ -55,10 +55,13 @@ def main():
     
     # 执行合并
     for dir_name in dir_list:
-        features_dir = current_dir / dir_name
+        # Exclude `scripts` and `i18n` directory
+        if dir_name == 'scripts' or dir_name == 'i18n':
+            continue
+        content_dir = current_dir / dir_name
         output_file = current_dir / f'{dir_name}.md'
-        if features_dir.exists():
-            merge_md_files(features_dir, output_file)
+        if content_dir.exists():
+            merge_md_files(content_dir, output_file)
             print(f'Successfully merged files from {dir_name} into {output_file}')
         else:
             print(f'Directory {dir_name} does not exist, skipping...')
