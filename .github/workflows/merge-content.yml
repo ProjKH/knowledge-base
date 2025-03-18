@@ -6,8 +6,7 @@ on:
       - main
     paths:
       - 'Features/**'
-      # 可以在这里添加更多目录
-      # - 'OtherDir/**'
+      - 'Abilities/**'
 
 jobs:
   merge:

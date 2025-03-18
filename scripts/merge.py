@@ -10,6 +10,8 @@ def process_content(content):
     rep = re.sub(pattern, r'**\1**', content)
     # 调整首行标题 # 标题 为 ## 标题
     rep = re.sub(r'^#', r'##', rep, count=1, flags=re.MULTILINE)
+    # 调整 {{f|name}} 为 `name`
+    rep = re.sub(r'\{\{f\|([^\}]+)\}\}', r'`\1`', rep)
     return rep
 
 def merge_md_files(features_dir, output_file):
