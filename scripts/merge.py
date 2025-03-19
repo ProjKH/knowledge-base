@@ -13,8 +13,8 @@ def process_content(content):
     # 调整 {{f|name}} 为 `name`
     rep = re.sub(r'\{\{f\|([^\}]+)\}\}', r'`\1`', rep)
     # 调整 <aside> 为 ```md, 调整 </aside> 为 ```
-    rep = re.sub(r'<aside>', r'```md', rep)
-    rep = re.sub(r'</aside>', r'```', rep)
+    rep = re.sub(r'<aside>', r'', rep)
+    rep = re.sub(r'</aside>', r'', rep)
     return rep
 
 def merge_md_files(content_dir, output_file):
