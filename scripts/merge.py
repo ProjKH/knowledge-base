@@ -12,9 +12,21 @@ def process_content(content):
     rep = re.sub(r'^#', r'##', rep, count=1, flags=re.MULTILINE)
     # 调整 {{f|name}} 为 `name`
     rep = re.sub(r'\{\{f\|([^\}]+)\}\}', r'`\1`', rep)
+    # 移除多余的 ---
+    rep = re.sub(r'---', r'', rep)
+    # 删除全部 ** 以及 __
+    rep = re.sub(r'\*\*', r'', rep)
+    rep = re.sub(r'__', r'', rep)
+    # 整行删除以下内容：
+    # - "Creator: 任意内容\n"
+    # - "设定: 任意内容\n"
+    # - "依赖扩展规则: 任意内容\n"
+    rep = re.sub(r'Creator: .*?\n', r'', rep)
+    rep = re.sub(r'设定: .*?\n', r'', rep)
+    rep = re.sub(r'依赖扩展规则: .*?\n', r'', rep)
     # 调整 <aside> 为 ```md, 调整 </aside> 为 ```
-    rep = re.sub(r'<aside>', r'', rep)
-    rep = re.sub(r'</aside>', r'', rep)
+    rep = re.sub(r'<aside>', r'```md', rep)
+    rep = re.sub(r'</aside>', r'```', rep)
     return rep
 
 def merge_md_files(content_dir, output_file):
