@@ -16,7 +16,6 @@ def process_markdown_content(content, rule_name):
     lines = content.split('\n')
     processed_lines = []
     metadata = {}
-    links = {}
     in_metadata = False
     found_title = False
     
@@ -55,37 +54,32 @@ def process_markdown_content(content, rule_name):
                 # Extract rule names and convert to [name] format
                 rule_names = []
                 for full_name in line.split(':')[1].split(','):
-                    name, path = extract_rule_name_and_path(full_name.strip())
+                    name, _ = extract_rule_name_and_path(full_name.strip())
                     rule_names.append(f'[{name}]')
-                    if path:
-                        links[name] = path
                 metadata['parent_rules'] = rule_names
             elif '内含规则' in line:
                 # Extract rule names and convert to [name] format
                 rule_names = []
                 for full_name in line.split(':')[1].split(','):
-                    name, path = extract_rule_name_and_path(full_name.strip())
+                    name, _ = extract_rule_name_and_path(full_name.strip())
                     rule_names.append(f'[{name}]')
-                    if path:
-                        links[name] = path
                 metadata['child_rules'] = rule_names
             continue
             
         processed_lines.append(line)
     
-    # Process links
+    # Process links in content
     link_pattern = r'\[([^\]]+)\]\(([^)]+)\)'
     processed_content = []
     
     for line in processed_lines:
         matches = re.finditer(link_pattern, line)
         for match in matches:
-            name, path = match.groups()
-            links[name] = path
+            name, _ = match.groups()
             line = line.replace(match.group(0), f'[{name}]')
         processed_content.append(line)
     
-    return '\n'.join(processed_content), metadata, links
+    return '\n'.join(processed_content), metadata
 
 def generate_metadata_table(all_metadata):
     if not all_metadata:
@@ -131,9 +125,16 @@ def generate_link_references(links, rule_id):
     sorted_links = sorted(links.items(), key=lambda x: x[0])
     
     for name, path in sorted_links:
-        # Add rules library path and URL encode
+        # Add rules library path and URL encode only non-Chinese characters
         full_path = os.path.join(rules_dir, path)
-        encoded_path = quote(full_path)
+        # Process each character individually
+        encoded_chars = []
+        for char in full_path:
+            if '\u4e00' <= char <= '\u9fff':
+                encoded_chars.append(char)
+            else:
+                encoded_chars.append(quote(char))
+        encoded_path = ''.join(encoded_chars)
         references.append(f'[{name}]: {encoded_path}')
     
     return '\n'.join(references)
@@ -158,26 +159,26 @@ def main():
         print(f"Error: Rules directory {rules_dir} not found")
         return
     
-    # Get all markdown files
+    # Get all markdown files and generate links
     md_files = {}
+    links = {}
     for file in os.listdir(rules_dir):
         if file.endswith('.md'):
             name = file.split(' ')[0]
             md_files[name] = os.path.join(rules_dir, file)
+            links[name] = file
     
-    # Process all files and collect metadata and links
+    # Process all files and collect metadata
     all_metadata = {}
-    all_links = {}
     processed_contents = []
     
     for position in positions_order:
         if position in md_files:
             with open(md_files[position], 'r', encoding='utf-8') as f:
                 content = f.read()
-                processed_content, metadata, links = process_markdown_content(content, position)
+                processed_content, metadata = process_markdown_content(content, position)
                 processed_contents.append(processed_content)
                 all_metadata[position] = metadata
-                all_links.update(links)
         else:
             print(f"Warning: No markdown file found for position {position}")
     
@@ -192,7 +193,7 @@ def main():
             output.write(metadata_table)
         
         # Add link references
-        link_references = generate_link_references(all_links, rule_id)
+        link_references = generate_link_references(links, rule_id)
         if link_references:
             output.write(link_references)
 
