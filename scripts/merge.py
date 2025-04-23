@@ -2,6 +2,7 @@ import os
 import re
 from pathlib import Path
 import argparse
+import importlib.util
 
 def process_content(content):
     # 替换 Notion 链接格式为加粗文本
@@ -70,6 +71,17 @@ def main():
         # Exclude `scripts` and `i18n` directory
         if dir_name == 'scripts' or dir_name == 'i18n':
             continue
+            
+        # Special handling for Rules directory
+        if dir_name == 'Rules':
+            # Import and execute rule-generate.py
+            rule_generate_path = current_dir / 'scripts' / 'rule-generate.py'
+            spec = importlib.util.spec_from_file_location("rule_generate", rule_generate_path)
+            rule_generate = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(rule_generate)
+            rule_generate.main()
+            continue
+            
         content_dir = current_dir / dir_name
         output_file = current_dir / f'{dir_name}.md'
         if content_dir.exists():
