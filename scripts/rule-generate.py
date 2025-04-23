@@ -24,12 +24,6 @@ def process_markdown_content(content, rule_name):
         if line.strip().startswith('<img src="https://www.notion.so/icons/'):
             continue
             
-        # Handle <aside> tags
-        if '<aside>' in line:
-            line = line.replace('<aside>', '```md')
-        if '</aside>' in line:
-            line = line.replace('</aside>', '```')
-            
         if line.startswith('# '):
             processed_lines.append(line)
             found_title = True
