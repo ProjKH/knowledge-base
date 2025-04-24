@@ -1,0 +1,30 @@
+# 武器大师徽记（缠斗）
+
+carry.invalid.m: No
+carry.invalid.a: No
+carry.invalid.s: No
+carry.immune.p: No
+carry.immune.e: No
+carry.immune.o: No
+规格: 琐碎
+类型: 项链
+特殊类型: 魔法物品
+价值: 3金币
+Creator: William Pucs (https://www.notion.so/William-Pucs-1c5d619a067b80acab49f60859dddd55?pvs=21)
+
+<aside>
+
+[装备](https://www.notion.so/1b3d619a067b80f99057fe3412922dd5?pvs=21)：3⚡️[战术](https://www.notion.so/1b3d619a067b8051b6eaffd160aee01c?pvs=21)，[占据](https://www.notion.so/1b3d619a067b8021ba8fe7cef8b96857?pvs=21)[项链](https://www.notion.so/1b3d619a067b805291a4d91d9bc68a65?pvs=21)×1
+
+- 为[闪避](https://www.notion.so/1b4d619a067b802bac11faba310fa6c8?pvs=21)[掷骰](https://www.notion.so/1b3d619a067b80f89c53e38483e535c4?pvs=21)时+2🅟。
+- 你每[装备](https://www.notion.so/1b3d619a067b80f99057fe3412922dd5?pvs=21)1件[缠斗武器](https://www.notion.so/1b3d619a067b80588581fae3400f9df8?pvs=21)，为[格挡](https://www.notion.so/1b4d619a067b803faa0fe2c3dd8fedee?pvs=21)[掷骰](https://www.notion.so/1b3d619a067b80f89c53e38483e535c4?pvs=21)时+1🅟。
+</aside>
+
+<aside>
+
+[装备](https://www.notion.so/1b3d619a067b80f99057fe3412922dd5?pvs=21)时[使用](https://www.notion.so/1b3d619a067b80bbbbacd6817c707325?pvs=21)：1⚡️[战术](https://www.notion.so/1b3d619a067b8051b6eaffd160aee01c?pvs=21)；[瞬息过程](https://www.notion.so/1b3d619a067b80aaa52efa8a891fe3ad?pvs=21)中最多使用1次
+
+- 本[轮](https://www.notion.so/1b3d619a067b80aeb62df5a99bfb8a82?pvs=21)中，你下次用[缠斗武器](https://www.notion.so/1b3d619a067b80588581fae3400f9df8?pvs=21)进行的[近战攻击](https://www.notion.so/1b4d619a067b80eda8b0facbba0c7b1a?pvs=21)[掷骰](https://www.notion.so/1b3d619a067b80f89c53e38483e535c4?pvs=21)+3🅟。
+</aside>
+
+*将力量封存于这枚徽记中的宗师一定掌握着难以想象的技艺与格斗本能。*
