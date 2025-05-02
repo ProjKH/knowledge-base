@@ -8,6 +8,7 @@ on:
       - 'Features/**'
       - 'Abilities/**'
       - 'Rules/**'
+      - 'Items/**'
 
 jobs:
   merge:

@@ -72,14 +72,19 @@ def main():
         if dir_name == 'scripts' or dir_name == 'i18n':
             continue
             
-        # Special handling for Rules directory
-        if dir_name == 'Rules':
-            # Import and execute rule-generate.py
-            rule_generate_path = current_dir / 'scripts' / 'rule-generate.py'
-            spec = importlib.util.spec_from_file_location("rule_generate", rule_generate_path)
-            rule_generate = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(rule_generate)
-            rule_generate.main()
+        # Special handling for directories that require script execution
+        special_scripts = {
+            'Rules': 'rule-generate.py',
+            'Items': 'items-generate.py',
+        }
+        if dir_name in special_scripts:
+            script_name = special_scripts[dir_name]
+            script_path = current_dir / 'scripts' / script_name
+            spec = importlib.util.spec_from_file_location(dir_name.lower() + '_generate', script_path)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            module.main()
+            print(f'Successfully executed {script_name}')
             continue
             
         content_dir = current_dir / dir_name
